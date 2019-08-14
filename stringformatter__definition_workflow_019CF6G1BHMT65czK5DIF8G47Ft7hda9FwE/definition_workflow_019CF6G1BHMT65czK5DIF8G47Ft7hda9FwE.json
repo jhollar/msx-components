@@ -1,0 +1,126 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_019CF6G1BHMT65czK5DIF8G47Ft7hda9FwE",
+    "name": "StringFormatter",
+    "title": "StringFormatter",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "InputString",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_019CF7VVRDABG2MFNvSdEZFjHaBb8oTfiAZ",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "OutputString",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_019CF8CY91OG81BIHQxZikwpSaRgsq0rHVD",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "ReplacedString",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_019CFAEA0L7SE2HBTKWGhfuuroXXsycyKHd",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "ToBeReplacedString",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_019CFAMTVJ9VU3L48KaTZj7mpTh86E6SunS",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "atomic_group": "MSX Service Components",
+        "is_atomic": true
+      },
+      "delete_workflow_instance": false,
+      "description": "Basic component that can be used to format a string value by replacing character values",
+      "display_name": "StringFormatter",
+      "favorite": false,
+      "target": {
+        "execute_on_target_group": false,
+        "execute_on_workflow_target": false,
+        "no_target": true,
+        "specify_on_workflow_start": false
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_019CF84M506P82ZS299eJklUBlnS8MlxvKA",
+        "name": "Replace String",
+        "title": "Replace String",
+        "type": "core.replacestring",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Replace String",
+          "input_string": "$workflow.definition_workflow_019CF6G1BHMT65czK5DIF8G47Ft7hda9FwE.input.variable_workflow_019CF7VVRDABG2MFNvSdEZFjHaBb8oTfiAZ$",
+          "replace_list": [
+            {
+              "replaced_string": "$workflow.definition_workflow_019CF6G1BHMT65czK5DIF8G47Ft7hda9FwE.input.variable_workflow_019CFAEA0L7SE2HBTKWGhfuuroXXsycyKHd$",
+              "replacement_string": "$workflow.definition_workflow_019CF6G1BHMT65czK5DIF8G47Ft7hda9FwE.input.variable_workflow_019CFAMTVJ9VU3L48KaTZj7mpTh86E6SunS$"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_019CFB9DVKB6I3JltelYYjNiOzPMmd7W59S",
+        "name": "Set Variables",
+        "title": "Set Variables",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Set Variables",
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_019CF6G1BHMT65czK5DIF8G47Ft7hda9FwE.output.variable_workflow_019CF8CY91OG81BIHQxZikwpSaRgsq0rHVD$",
+              "variable_value_new": "$activity.definition_activity_019CF84M506P82ZS299eJklUBlnS8MlxvKA.output.result_string$"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_01ggXe9oj31C4KkAmubD6uezL1stQpioN"
+    ]
+  },
+  "categories": {
+    "category_01ggXe9oj31C4KkAmubD6uezL1stQpioN": {
+      "unique_name": "category_01ggXe9oj31C4KkAmubD6uezL1stQpioN",
+      "name": "MSX Components",
+      "title": "MSX Components",
+      "type": "basic.category",
+      "base_type": "category",
+      "description": "This category represents MSX components used to create workflows",
+      "category_type": "custom",
+      "object_type": "category"
+    }
+  }
+}
